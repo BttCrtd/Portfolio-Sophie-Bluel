@@ -121,6 +121,9 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+/*** Portfolio ***/
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
@@ -137,6 +140,13 @@ li:hover {
 	width: 100%;
 
 }
+
+.gallery p {
+	width: 100%;
+	color: #ff0000;
+	text-align: center;
+}
+
 #contact {
 	width: 50%;
 margin: auto;
