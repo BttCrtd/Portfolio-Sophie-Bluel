@@ -234,3 +234,32 @@ footer nav ul {
 	border: solid 1px #1D6154;
 	cursor: pointer;
 }
+
+header a {
+	text-decoration: none;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+nav ul li a:hover {
+	color: #B1663C;
+}	
+
+/* ------ Login page ------ */
+#login-section {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#login-section form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}

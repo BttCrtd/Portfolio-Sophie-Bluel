@@ -34,7 +34,7 @@ async function generateProjects(idcategorie) {
         // Création de toutes les fiches projets //
           for (const project of listProject) {
             if (idcategorie){
-              if (project.categoryId === idcategorie) {
+              if (project.category.id === idcategorie) {
                 const myProject = projectSheet(project.id, listProject);
                 containerProjects.appendChild(myProject);
               };
@@ -66,7 +66,7 @@ function categorieButton(categoryName, categoryID = null, isActive = false) {
 
     if (categoryID !== null) {
       buttonCategory.id = categoryID;
-    }
+  }
     
     if (isActive) {
       buttonCategory.classList.add("active");
