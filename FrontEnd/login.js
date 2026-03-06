@@ -1,3 +1,19 @@
+// Gestion du lien Login/Logout dans la navigation en fonction de l'état d'authentification de l'utilisateur
+function loginLogout() {
+  const loginButton = document.querySelector('nav a[href="login.html"]')
+  loginButton.innerHTML = ""
+  if (sessionStorage.getItem('authenticated') === 'true') {
+    loginButton.innerHTML = "Logout"
+    loginButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      sessionStorage.clear();
+      loginLogout()
+    });
+  } else {
+    loginButton.innerHTML = "Login"
+  }
+}
+
 const loginButton = document.getElementById('connection-button');
 loginButton.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -17,8 +33,9 @@ loginButton.addEventListener('click', async (event) => {
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('authenticated', 'true');
+        sessionStorage.setItem('token', data.token);
+        sessionStorage.setItem('authenticated', 'true');
+        loginLogout()
         console.log("utilisateur conncté")
       }
       else {
@@ -32,4 +49,4 @@ loginButton.addEventListener('click', async (event) => {
     console.error('Error:', error);
 }});
 
-    
+loginLogout()
