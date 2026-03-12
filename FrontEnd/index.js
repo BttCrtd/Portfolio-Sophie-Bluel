@@ -1,3 +1,4 @@
+import { loginLogout } from "./login.js";
 // Création d'une fiche projet
 function projectSheet(idProject, listProject) {
   for (const project of listProject) {
@@ -54,9 +55,6 @@ async function generateProjects(idcategorie) {
   }
 }
 
-generateProjects();
-
-
 /* ----------  Catégories de projets  ---------- */
 /* Création d'un bouton de filtrage de catégorie de projet */
 function categorieButton(categoryName, categoryID = null, isActive = false) {
@@ -100,4 +98,58 @@ async function getCategoriesProject() {
   }
 }
 
-getCategoriesProject();
+function editingTools() {
+  const headerBanner = document.querySelector("header");
+  headerBanner.classList.add("header-edit-mode");
+  const banner = document.createElement("div");
+  const icon = document.createElement("i");
+  icon.classList.add("fa-regular", "fa-pen-to-square");
+  banner.appendChild(icon);
+  const textBanner = document.createElement("p");
+  banner.classList.add("banner");
+  textBanner.innerText = "Mode édition";
+  banner.appendChild(textBanner);
+  headerBanner.insertBefore(banner, headerBanner.firstChild);
+}
+
+function editionButton() {
+  const porfolioEmplacement = document.getElementById("portfolio");
+  const titleH2 = document.querySelector("#portfolio h2");
+  const editBtnContainer = document.createElement("div");
+  editBtnContainer.classList.add("container-edit-btn");
+  const h2Title = document.createElement("h2");
+  h2Title.innerText = "Mes projets";
+  editBtnContainer.appendChild(h2Title);
+  const editButton = document.createElement("button");
+  const iconEditBtn = document.createElement("i");
+  iconEditBtn.classList.add("fa-regular");
+  iconEditBtn.classList.add("fa-pen-to-square");
+  editButton.classList.add("edit-btn");
+  editButton.innerText = "modifier";
+  editButton.appendChild(iconEditBtn);
+  editBtnContainer.appendChild(editButton);
+  porfolioEmplacement.insertBefore(editBtnContainer, titleH2);
+  porfolioEmplacement.removeChild(titleH2);
+}
+
+
+function isConnected() {
+  console.log(sessionStorage.getItem('token'));
+  if (sessionStorage.getItem('token')) {
+    console.log("utilisateur connecté");
+    generateProjects();
+    editingTools();
+    editionButton();
+  } else {
+    console.log("utilisateur non connecté");
+    generateProjects();
+    getCategoriesProject();
+  }
+  loginLogout();
+}
+
+
+isConnected();
+
+
+
