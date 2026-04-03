@@ -12,8 +12,10 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/modal.css">
 	<script type="module" src="index.js"></script>	
 	<script type="module" src="login.js"></script>
+	<script type="module" src="modal.js"></script>
 </head>
 <body>
 <header>
@@ -66,5 +68,63 @@
 		</ul>
 	</nav>
 </footer>
+
+<div class="background"></div>
+<div class="modale">
+	<section class="modale-gallery-photo">
+		<div class="close-modale">
+			<button class="close-btn">
+			<i class="fa-solid fa-x"></i>
+			</button>
+		</div>
+        <h3>Galerie photo</h3>
+        <div class="modale-body">
+          <div class="project-list-container"></div>
+        </div>
+        <p class="operation-status-remove-project"></p>
+        <button class="modale-btn add-photo-btn">Ajouter une photo</button>
+    </section>
+	
+    <section class="modale-add-photo">
+        <div class="close-modale">
+          <button class="back">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button class="close-btn">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <h3>Ajout photo</h3>
+        <div class="modale-body">
+          <div class="add-photo-section">
+            <div class="add-photo-here">
+              <div class="icon-container">
+                <i class="fa-regular fa-image"></i>
+              </div>
+              <button class="plusAddPhoto-btn">+ Ajouter photo</button>
+              <p>jpg, png : 4mo max</p>
+            </div>
+            <p class="error-message" id="error-photo"></p>
+            <div class="viewPhoto">
+              <input type="file" id="fileInput">
+            </div>
+          </div>
+          <form>
+            <div class="element-form-contener">
+              <label for="title">Titre</label>
+              <input type="text" name="title" id="title">
+            </div>
+            <p class="error-message" id="error-title"></p>
+            <div class="element-form-contener">
+              <label for="choice-category">Catégorie</label>
+              <select name="category" id="choice-category"></select>
+            </div>
+            <p class="error-message" id="error-category"></p>
+          </form>
+        </div>
+        <p class="operation-status-add-new-project"></p>
+        <button class="modale-btn validation-btn">Valider</button>
+    </section>
+</div>
 </body>
 </html>

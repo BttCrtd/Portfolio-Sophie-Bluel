@@ -18,8 +18,7 @@ export function loginLogout() {
 
 const loginButton = document.getElementById('connection-button');
 const errorMessage = document.getElementById('error-message');
-if (loginButton, errorMessage) {
-errorMessage.innerText = "";
+if (loginButton) {
 loginButton.addEventListener('click', async (event) => {
   event.preventDefault();
   try {
@@ -43,17 +42,16 @@ loginButton.addEventListener('click', async (event) => {
       }
       else {
         console.log("erreur de connexion")
+        errorMessage.innerHTML = "Erreur dans l'identifiant ou le mot de passe.";
       }
     })
     .catch((error) => {
-      error.preventDefault()
-      console.log("Erreur d'identifiant ou de mot de passe", error);
-      errorMessage.innerHTML = "Erreur dans l'identifiant ou le mot de passe.";
+      console.log("Une erreur est survenue lors de la connexion.", error);
+      errorMessage.innerHTML = "Une erreur est survenue lors de la connexion.";
     });
   } catch (error) {
-    error.preventDefault()
     console.log("Une erreur est survenue lors de la connexion", error);
-    errorMessage.innerHTML = "Une erreur est survenue lors de la connexion.";
+    errorMessage.innerHTML = "Une erreur est survenue";
 }});}
 
 

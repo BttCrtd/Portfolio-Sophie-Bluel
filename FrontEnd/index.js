@@ -22,10 +22,9 @@ function projectSheet(idProject, listProject) {
 }
 
 // Affichage des fiches projets
-async function generateProjects(idcategorie) {
+export async function generateProjects(idcategorie) {
   const containerProjects = document.querySelector(".gallery");
   containerProjects.innerHTML = "";
-  
   try {
     await fetch("http://localhost:5678/api/works")
       .then((response) => {
