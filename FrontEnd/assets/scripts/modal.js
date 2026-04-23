@@ -235,6 +235,7 @@ catégorieForm();
 /***************************************************************************************************************/
 /**************** Function pour valider le formulaire avant envoie et activation du boutton d'envoie ***********/
 function validateForm() {
+  let check = false
   
   const validationButton = document.querySelector(".validation-btn");
 
@@ -244,9 +245,12 @@ function validateForm() {
 
   if (imgSrc.files.length > 0 && titleProject.value !== "" && categoryProject.value !== "") {
     validationButton.disabled = false;
+    check = true
   } else {
     validationButton.disabled = true
+    check = false
   }
+  return check
 }
 
 /* Appel à validateform pour activé boutton d'envoie */

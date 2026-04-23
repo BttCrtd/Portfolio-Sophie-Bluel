@@ -133,14 +133,11 @@ function editionButton() {
 
 
 function isConnected() {
-  console.log(sessionStorage.getItem('token'));
   if (sessionStorage.getItem('token')) {
-    console.log("utilisateur connecté");
     generateProjects();
     editingTools();
     editionButton();
   } else {
-    console.log("utilisateur non connecté");
     generateProjects();
     getCategoriesProject();
   }
