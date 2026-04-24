@@ -171,6 +171,17 @@ function deleteProject() {
 /****************************************************************************************************/
 /****************************************** FORMULAIRE **********************************************/
 /****************************************************************************************************/
+/**** Validation de l'image ****/
+function validateImage(file) {
+  const imageTypes = ["image/jpeg", "image/png"];
+  const imagesize = 4 * 1024 * 1024; 
+  if (imageTypes.includes(file.type) && file.size <= imagesize) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 /**** Ajouter une image dans le formulaire ****/
 function addImage() {
   const errorPhoto = document.getElementById("error-photo");
@@ -189,6 +200,10 @@ function addImage() {
   });
   inputFile.addEventListener("change", (event) => {
     const file = event.target.files[0];
+    if (!validateImage(file)) {
+      errorPhoto.innerText = "Veuillez sélectionner une image au format JPG ou PNG et de taille inférieure à 4 Mo.";
+      return;
+    }
     viewPhoto.insertBefore(preview, inputFile)
     if (file) {
       const urlImg = new FileReader();
